@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://apprendre-php.com/tutoriels/tutoriel-6-les-variables.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Les variables</title>
+        
+        <meta name="description" content="Liste de tutoriels classés par catégorie (introduction au langage PHP, environnements de travail, les bases, bonnes pratiques, xml, poo, bases de données, concepts avancés...)">
+        <meta name="keywords" content="php, php2, php3, php4, php5, php6, php7, symfony, cake, dupral, joomla, wordpress, mysql, tutoriels, tutoriaux, tutorials, apprendre, debutant, programmation, serveur, web, rasmus, lerdorf, zend, zeev, zuraski, forum, paris, afup, poo, objet, base, données, exécution, opcode, compilation, framework, communauté, sécurité, injection, elephpant, scripts, hello, world, wamp, mamp, xamp, lamp, easyphp, oracle, postgresql, sqlite, mssql, phpmyadmin, cookies, sessions, tableaux, arrays, strings, xss, sql, csrf">
+        <meta name="author" content="Hugo Hamon">
+        <link rel="stylesheet" type="text/css" media="screen" href="./exo2.php_files/global.css">
+        <!--[if lt IE 7]>
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/v2/ie/ie6.css" />
+        <![endif]-->
+        <!--[if gte IE 7]>
+        <link rel="stylesheet" type="text/css" media="screen" href="/css/v2/ie/ie7.css" />
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" media="screen" href="./exo2.php_files/interieur.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="./exo2.php_files/insertcode.css">
+        <link rel="alternate" type="application/atom+xml" title="Flux Atom des actualités" href="https://apprendre-php.com/syndication/atom-actualites.php">
+        <link rel="alternate" type="application/atom+xml" title="Flux Atom des flash-infos" href="https://apprendre-php.com/syndication/atom-flashs.php">
+        <link rel="alternate" type="application/atom+xml" title="Flux Atom des forums" href="https://apprendre-php.com/syndication/atom-forums.php">
+        <link rel="alternate" type="application/atom+xml" title="Flux Atom des portions de script" href="https://apprendre-php.com/syndication/atom-portions.php">
+        <link rel="alternate" type="application/atom+xml" title="Flux Atom des tutoriels" href="https://apprendre-php.com/syndication/atom-tutoriels.php">
+        <link rel="alternate" type="application/rss+xml" title="Flux RSS des actualités" href="https://apprendre-php.com/syndication/rss-actualites.php">
+        <link rel="alternate" type="application/rss+xml" title="Flux RSS des flashs-infos" href="https://apprendre-php.com/syndication/rss-flashs.php">
+        <link rel="alternate" type="application/rss+xml" title="Flux RSS des forums" href="https://apprendre-php.com/syndication/rss-forums.php">
+        <link rel="alternate" type="application/rss+xml" title="Flux RSS des portions de script" href="https://apprendre-php.com/syndication/rss-portions.php">
+        <link rel="alternate" type="application/rss+xml" title="Flux RSS des tutoriels" href="https://apprendre-php.com/syndication/rss-tutoriels.php">
+        <link rel="stylesheet" href="./exo2.php_files/github.css">
+    </head>
+    <body cz-shortcut-listen="true">
+        <div id="page">
+            <div id="fond-content">
+                <h1>Les variables</h1>
+                <div id="preambule">
+                    <ul>
+                        <li>
+                            <a href="https://apprendre-php.com/tutoriels/tutoriel-6-les-variables.html#content" title="Aller au contenu"><span>Aller au </span>contenu</a>
+                        </li>
+                        <li>
+                            <a href="https://apprendre-php.com/tutoriels/tutoriel-6-les-variables.html#menu" title="Aller au menu"><span>Aller au </span>menu</a>
+                        </li>
+                    </ul>
+                    <form method="get" action="https://apprendre-php.com/tutoriels/tutoriel-6-les-variables.html#" id="searchForm" onsubmit="alert(&#39;Moteur de recherches non disponible !&#39;);">
+                        <fieldset>
+                            <legend>Rechercher</legend>
+                            <div>
+                                <label for="search">Rechercher : </label>
+                                <input type="text" id="search" name="search" title="Entrez vos mots-clés" value="mots-clés" onfocus="this.value=&#39;&#39;;">
+                            </div>
+                            <button type="submit" name="rechercher">OK</button>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div id="container">
+                    <div id="header">
+                        <ul id="menu">
+                            <li><a accesskey="1" href="https://apprendre-php.com/index.html" title="Retour à la page d&#39;accueil">Accueil</a></li>
+                            <li><a accesskey="2" href="https://apprendre-php.com/actualites/actualites" title="Consulter les actualités">Actualités</a></li>
+                            <li><a accesskey="3" href="https://apprendre-php.com/tutoriels.html" title="Consulter les tutoriels PHP">Tutoriels</a></li>
+                            <li><a accesskey="4" href="https://apprendre-php.com/portions-de-script.html" title="Les portions de code triées par catégories">Scripts</a></li>
+                            <li><a accesskey="5" href="https://apprendre-php.com/forums.html" title="Accéder aux forums de discussions">Forums</a></li>
+                                                    <li><a accesskey="6" href="https://apprendre-php.com/forums/inscription.html" title="Devenir membre du site">Inscription</a></li>
+                                                    <li><a accesskey="7" href="https://apprendre-php.com/guestbook.html" title="Signer le livre d&#39;or">Livre d'or</a></li>
+                            <li><a accesskey="9" href="https://apprendre-php.com/contacts/contactez-nous.html" title="Formulaire de contact">Contact</a></li>
+                        </ul>
+                                            </div><!-- end of #header -->
+                    <div id="content">
+                                                <div id="articles">
+                            <div id="publicite">
+                                <script type="text/javascript"><!--
+                                    google_ad_client = "pub-7753901842799835";
+                                    google_ad_width = 468;
+                                    google_ad_height = 60;
+                                    google_ad_format = "468x60_as";
+                                    google_ad_type = "image";
+                                    google_ad_channel = "5793904880+8022013819+9063761553+6586917175";
+                                    google_color_border = "341473";
+                                    google_color_bg = "ffffff";
+                                    google_color_link = "000033";
+                                    google_color_text = "000000";
+                                    google_color_url = "660000";
+                                    //-->
+                                </script>
+                                
+                            </div>
+                                                                                        <h2>Les variables</h2>
+    <div id="infosPost">
+        <ul>
+            <li class="iconeAuteur">Par Emacs</li>
+            <li class="iconeCommentaires">
+                25
+                commentaires
+            </li>
+            <li class="iconeEtoile">46391 lectures</li>
+            <li class="iconeSyndication">
+                <a href="https://apprendre-php.com/syndication/rss-tutoriels.php" title="S&#39;abonner au flux RSS des tutoriels">RSS</a>&nbsp;-&nbsp;
+                 <a href="https://apprendre-php.com/syndication/atom-tutoriels.php" title="S&#39;abonner au flux Atom des tutoriels">Atom</a>
+            </li>
+                </ul>
+        <img src="./exo2.php_files/defaut.png" alt="" class="imageDroite">
+    </div>
+
+    <div>
+        <p>Parmi les concepts les plus importants de la programmation figure la <em>notion de variable</em>. C'est une notion à assimiler et maîtriser pour pouvoir entreprendre les premières applications de base. Nous verrons que les variables font partie des mécanismes qui permettent de rendre une application dynamique. Entrons dans le vif du sujet.</p><h3>Qu'est-ce qu'une variable ?</h3><p>Une variable est une structure de données de <em><strong>type primitif</strong></em> (entier, réel, caractère, chaîne de caractères, booléen ou null) ou bien de <em><strong>type structuré</strong></em> (tableau ou objet) qui permet de stocker une ou plusieurs valeurs. Chaque valeur d'une variable est susceptible d'être remplacée par une autre au cours de l'exécution du programme. D'où le terme « variable ». En programmation, une variable est définie suivant 4 informations essentielles listées ci-après :</p><ul>	<li>Un nom</li>	<li>Un type </li>	<li>Une / des valeurs</li>	<li>Une sémantique (un sens) après les opérations effectuées sur cette variable. Plus concrètement, la valeur de la variable est-elle logique par rapport à son contexte initial ?</li></ul><p>Schématiquement, une variable peut être assimilée à une boîte opaque sur laquelle est collée une étiquette portant un nom (le nom de la variable). A l'intérieur de ce paquet se trouve quelque chose (la valeur) d'un type précis (le type de la variable). Quand nous souhaitons obtenir cette valeur, nous ne nous adressons pas directement à elle mais nous y faisons référence en sélectionnant la boîte par son nom.</p><p>Prenons un exemple plus parlant. Un médecin souhaite obtenir une information concernant l'état de santé d'un de ses patients (<em>Mr Charles Dupont</em>). Pour l'obtenir, il devra demander à sa secrétaire de lui sortir le dossier <em>Charles Dupont</em> dans lequel se trouve cette information qu'il ne connait pas !</p><h3>Déclaration et initialisation d'une variable</h3><p>Après cette introduction plutôt théorique, nous entamons la partie pratique du sujet. Il s'agit de la déclaration et de l'initialisation d'une variable en langage PHP. Contrairement à des langages très typés comme C, C++ ou Java; PHP ne porte pas d'importance au typage des variables. Par exemple, pour une même variable, le programmeur est libre de lui affecter une valeur de type entier à un instant T1 puis de lui affecter une chaine de caractères à un instant T2. On dit que PHP est un langage de typage « faible et dynamique ». Cela rend son utilisation plus souple par les développeurs mais pas forcément plus assidue... C'est d'ailleurs quelque chose que l'on peut reprocher à PHP.</p><p>Afin d'adopter de bonnes pratiques dès le début, nous vous conseillons de déclarer toute vos variables avec un type et leur <em>affecter</em> une valeur par défaut. Retenez le terme <em>d'affectation</em> au passage.</p><p>Par ailleurs, il est nécessaire de nommer les variables avec des noms évocateurs afin de faciliter la lecture du code. Une variable mal nommée sera source de problème lors d'un débugging ou d'une maintenance du programme des semaines plus tard.</p><p>Toute variable doit être déclarée au moyen du signe dollars <strong>$</strong> suivi obligatoirement de lettres (en majuscules ou minuscules) ou d'un underscore (tiret souligné _ ). Ci-dessous, un tableau récapitulatif des syntaxes correctes et incorrectes de déclaration de variables.</p><table border="0" summary="Tableau des déclarations de variables">	<caption>Déclaration de variables</caption>	<thead>		<tr style="color: #ffffff">			<th style="width: 20%">Correct</th>			<th style="width: 20%">Incorrect</th>			<th style="width: 60%">Explications</th>		</tr>	</thead>	<tfoot>		<tr style="color: #ffffff">			<th class="auCentre" colspan="3">Déclaration de variables PHP</th>		</tr>	</tfoot>	<tbody>		<tr class="rowGrey">			<td>$variable</td>			<td>variable</td>			<td>Une variable doit commencer par $</td>		</tr>		<tr class="rowWhite">			<td>$Variable1</td>			<td>$Variable 1</td>			<td>Les espaces sont interdits</td>		</tr>		<tr class="rowGrey">			<td>$variable_suite</td>			<td>$variable-suite</td>			<td>Le tiret est interdit</td>		</tr>		<tr class="rowWhite">			<td>$_variable</td>			<td>$-variable</td>			<td>Le tiret est interdit</td>		</tr>		<tr class="rowGrey">			<td>$variable2</td>			<td>$2variable</td>			<td>Il ne peut y avoir de chiffre après le $</td>		</tr>	</tbody></table><p><strong><em>Note :</em></strong> PHP est l'un des rares langages de programmation acceptant les caractères accentués dans les noms de variables. Cependant les employer est fortement déconseillé pour des raisons de maintenance et de portabilité.</p><p>Le script suivant présente la déclaration de 6 variables de types différents. La première et la seconde sont de type chaine de caractères, la troisième de type entier, la quatrième de type booléen, la cinquième de type tableau et la dernière de type Etudiant. Nous n'aborderons pas ces deux derniers dans ce tutoriel. D'autres tutoriels sont dédiés aux tableaux et à la programmation orientée objet.</p><pre class="php"><div class="head">Déclaration de variables de types différents</div><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="re0">$prenom</span> = <span class="st0">'Hugo'</span>;  <span class="co1">// Type string (chaine de caractères)</span></div><div class="de1">  <span class="re0">$nom</span> = <span class="st0">"Hamon"</span>;    <span class="co1">// Type string (chaine de caractères)</span></div><div class="de1">  <span class="re0">$age</span> = <span class="nu0">19</span>;    <span class="co1">// Type entier</span></div><div class="de1">  <span class="re0">$estEtudiant</span> = <span class="kw2">true</span>;  <span class="co1">// Type booléen</span></div><div class="de1">  <span class="re0">$cours</span> = <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">(</span><span class="st0">'physique'</span>,<span class="st0">'chimie'</span>,<span class="st0">'informatique'</span>,<span class="st0">'philosophie'</span><span class="br0">)</span>; <span class="co1">// Type tableau</span></div><div class="de1">  <span class="re0">$unEtudiant</span> = <span class="kw2">new</span> Etudiant<span class="br0">(</span><span class="br0">)</span>; <span class="co1">// Objet de type Etudiant</span></div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p>Pour déclarer une variable de type :</p><ul>	<li><em>string :</em> on entoure la chaîne de caractères de guillemets ou d'apostrophes.	</li>	<li><em>entier, réel ou flottant :</em> on écrit la valeur telle qu'elle. Pour les flottants, la virgule est remplacée par un point (écriture à l'américaine).</li>	<li><em>booléen</em> : on écrit <em>true</em> ou <em>false</em> directement.</li>	<li><em>sans type</em> : si l'on ne souhaite pas typer la variable, on lui affecte la valeur <em>null</em>.</li></ul><p><em><strong>Note :</strong> le type d'une variable n'est pas déclaré explicitement comme en Java, C ou encore C++ mais implicitement au moment de l'affectation d'une valeur.</em> </p><p>Les noms de variables sont sensibles à la casse, ce qui signifie que l'interprêteur fera la différence entre deux variables écrites différemment. Par exemple, $nom et $NOM seront considérées comme deux variables complètement distinctes.</p><p>Par convention, les noms de variables composés de plusieurs mots (exemple : $estEtudiant) doivent avoir le premier mot en minuscules et les autres mots avec la première lettre en majuscule. Cette règle n'est pas à obligatoirerent à suivre mais fortement conseillée dans la mesure où elle fait partie des bonnes pratiques de programmation.</p><p><strong>Note :</strong> il est recommandé de placer la directive error_reporting du php.ini à E_ALL sur toutes vos pages afin de faire remonter toute erreur générée. Les variables mal déclarées ou non initialisées peuvent être source d'erreur d'analyse.</p><h3>L'affectation de valeur à une variable</h3><p>L'affectation permet de fixer une valeur à une variable. Elle s'effectue au moyen du symbole égal <strong>=</strong>. Dans le script précédent, nous avons déclaré 6 variables et leur avons affecté à chacune une / plusieurs valeur(s) par défaut.</p><p>L'exemple ci-dessous montre comment changer la valeur d'une variable. Rien n'est compliqué puisque c'est exactement la même chose que précédemment.</p><pre class="php"><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="re0">$prenom</span> = <span class="st0">'Hugo'</span>;</div><div class="de1">  <span class="re0">$age</span> = <span class="nu0">19</span>;</div><div class="de1"> </div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="re0">$prenom</span>;        <span class="co1">// Affiche 'Hugo'</span></div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="st0">'&lt;br/&gt;'</span>;</div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="re0">$age</span>;        <span class="co1">// Affiche 19</span></div><div class="de1"> </div><div class="de1">  <span class="re0">$prenom</span> = <span class="st0">'Hadrien'</span>;</div><div class="de1">  <span class="re0">$age</span> = <span class="nu0">18</span>;</div><div class="de1"> </div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="re0">$prenom</span>;        <span class="co1">// Affiche 'Hadrien'</span></div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="st0">'&lt;br/&gt;'</span>;</div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="re0">$age</span>;        <span class="co1">// Affiche 18</span></div><div class="de1"> </div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p>Explications : nous avons deux variables initialisées <em>$prenom</em> et <em>$age</em> Nous affichons leur valeur pour les contrôler. Puis nous actualisons les variables en leur affectant à chacune une nouvelle valeur. Enfin, nous affichons les nouvelles valeurs. Nous remarquons alors que nous avons perdu les valeurs originales. <span class="important">Une affectation entraîne donc l'écrasement de l'ancienne valeur par la nouvelle</span>.</p><h3>La concaténation, c'est quoi ?</h3><p>Sous ce terme un peu « barbare » se cache un principe fondamental lié des variables. La concaténation n'est ni plus ni moins que l'opération permettant d'assembler deux ou plusieurs informations dans une variable. Cette opération se réalise au moyen de l'opérateur de concaténation qui est le point (<strong>.</strong>). Illustrons cela avec un exemple :</p><pre class="php"><div class="head">La concaténation</div><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="co1">// Déclaration des variables</span></div><div class="de1">  <span class="re0">$prenom</span> = <span class="st0">'Hugo'</span>;</div><div class="de1">  <span class="re0">$nom</span> = <span class="st0">'Hamon'</span>;</div><div class="de1">  <span class="re0">$identite</span> = <span class="st0">''</span>;</div><div class="de1">  <span class="co1">// On concatène $nom et $prenom dans $identite</span></div><div class="de1">  <span class="re0">$identite</span> = <span class="re0">$prenom</span> .<span class="st0">' '</span>. <span class="re0">$nom</span>;</div><div class="de1">  <span class="co1">// Affiche 'Hugo Hamon'</span></div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="re0">$identite</span>;</div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p>Nous avons placé ici dans la variable $identite, le contenu de la variable $prenom suivi d'un espace par concaténation et enfin le contenu de la variable $nom.</p><p>Nous aurions également pu procéder de la manière suivante, ce qui nous évite d'employer une nouvelle variable $identite.</p><pre class="php"><div class="head">Autre exemple de concaténation</div><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="co1">// Déclaration des variables</span></div><div class="de1">  <span class="re0">$prenom</span> = <span class="st0">'Hugo'</span>;</div><div class="de1">  <span class="re0">$nom</span> = <span class="st0">'Hamon'</span>;</div><div class="de1">  <span class="co1">// On concatène $nom dans $prenom</span></div><div class="de1">  <span class="re0">$prenom</span> .= <span class="st0">' '</span>. <span class="re0">$nom</span>;</div><div class="de1">  <span class="co1">// Affiche 'Hugo Hamon'</span></div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="re0">$prenom</span>;</div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p>La syntaxe de concaténation ci-dessus signifie que l'on ajoute l'espace et le contenu de la variable $nom à la suite du contenu de la variable $prenom. Ainsi, cette syntaxe est similaire à celle-ci :</p><h3>Opérations mathématiques sur les variables</h3><p>Les variables peuvent contenir des nombres. Il est donc logique que nous puissions opérer mathématiquement sur ces valeurs. PHP propose une série d'opérateurs mathématiques assurant cela. Il est donc possible d'additionner, diviser, multiplier, ou encore soustraire les valeurs des variables.</p><p>Les exemples ci-dessous illustrent l'emploi de ces différents opérateurs mathématiques.</p><pre class="php"><div class="head">Opérations mathématiques sur les variables</div><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="co1">// Déclaration des variables mathématiques</span></div><div class="de1">  <span class="re0">$a</span> = <span class="nu0">10</span>;</div><div class="de1">  <span class="re0">$b</span> = <span class="nu0">2</span>;</div><div class="de1">  <span class="re0">$c</span> = <span class="nu0">0</span>;</div><div class="de1">  <span class="co1">// $c vaut 10+2 = 12</span></div><div class="de1">  <span class="re0">$c</span> = <span class="re0">$a</span> + <span class="re0">$b</span>;</div><div class="de1">  <span class="co1">// $c vaut 10x2 = 20</span></div><div class="de1">  <span class="re0">$c</span> = <span class="re0">$a</span> * <span class="re0">$b</span>;</div><div class="de1">  <span class="co1">// $c vaut 10/2 = 5</span></div><div class="de1">  <span class="re0">$c</span> = <span class="re0">$a</span> / <span class="re0">$b</span>;</div><div class="de1">  <span class="co1">// $c vaut 10-2 = 8</span></div><div class="de1">  <span class="re0">$c</span> = <span class="re0">$a</span> - <span class="re0">$b</span>;</div><div class="de1">  <span class="co1">// $c vaut le reste de la division de $a par $b soit 0</span></div><div class="de1">  <span class="re0">$c</span> = <span class="re0">$a</span> % <span class="re0">$b</span>;</div><div class="de1">  <span class="co1">// Incrémentation de $a</span></div><div class="de1">  <span class="re0">$a</span>++;</div><div class="de1">  <span class="co1">// Décrémentation de $b</span></div><div class="de1">  <span class="re0">$b</span>--;</div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p>L'opérateur <em>modulo</em> (%) retourne le reste de la division de deux nombres.<br>L'opérateur d'incrémentation augmente de 1 la valeur de la variable. La syntaxe $a++ est identique à $a+=1 et $a = $a+1.<br>L'opérateur de décrémentation diminue de 1 la valeur de la variable. La syntaxe $b-- est identique à $b-= 1 et $b = $b-1.</p><p>Pour plus d'informations concernant les opérateurs mathématiques, nous vous conseillons de vous reporter au tutoriel « <a href="https://apprendre-php.com/tutoriels/tutoriel-8-les-operateurs.html" title="Les différentes sortes d&#39;opérateurs">les opérateurs arithmétiques, logiques et binaires</a> ».</p><h3>Les variables dynamiques</h3><p>Elles sont apparues avec la version 4 de PHP et on les appelle aussi « variable variable ». Concrètement, une variable dynamique repose sur le fait que la valeur d'une variable devienne à son tour une variable. Prenons un exemple :</p><pre class="php"><div class="head">Utilisation des variables dynamiques</div><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="co1">// Définition des variables</span></div><div class="de1">  <span class="re0">$poupee</span> = <span class="nu0">25</span>;</div><div class="de1">  <span class="re0">$voiture</span> = <span class="nu0">17</span>;</div><div class="de1">  <span class="re0">$console</span> = <span class="nu0">250</span>;</div><div class="de1">  <span class="co1">// Choix d'un jouet</span></div><div class="de1">  <span class="re0">$jouet</span> = <span class="st0">'console'</span>;</div><div class="de1">  <span class="co1">// Affichage du prix du jouet sélectionné</span></div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="re0">$jouet</span> ,<span class="st0">' : '</span>, <span class="re0">$$jouet</span> ,<span class="st0">'€'</span>;  <span class="co1">// Retourne 'console : 250€'</span></div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p>Dans cet exemple, nous déclarons 3 variables qui représentent les prix de 3 jouets (une poupée, une voiture et une console de jeux vidéo). Puis nous déclarons une variable $jouet dans laquelle on stocke le nom du jouet pour lequel on désire connaître le prix. Ici nous avons décidé de savoir le prix que vaut la console vidéo. Enfin, au moyen d'une instruction echo(), on affiche le jouet sélectionné (console vidéo) et son prix en faisant une variable variable. Ainsi, $jouet = 'console' mais $$jouet est similaire à $console. En effet, la valeur de $jouet est devenue le nom de la variable.</p><p><em><strong>Note :</strong> Bien que leur principe de fonctionnement est intéressant, il est vivement recommandé de ne pas les utiliser. Les tableaux, que nous verrons dans le chapitre suivant, remplissent cette fonction de variables dynamiques.</em></p><h3>Test de l'existence d'une variable</h3><p>Dans un programme, il est très souvent utile de savoir si une variable existe avant de pouvoir l'exploiter. Le langage PHP met à disposition des développeurs la fonction (même structure du langage) <a href="http://fr.php.net/isset" title="Documentation officielle de la fonction isset()">isset()</a> qui permet de savoir si oui ou non la variable passée en paramètre existe. Cette fonction retourne un booléen TRUE ou FALSE. Illustrons ceci avec un exemple :</p><pre class="php"><div class="head">Test d'existence de variables dans un programme</div><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="co1">// Déclaration de la variable</span></div><div class="de1">  <span class="re0">$prenom</span> = <span class="st0">'Hugo'</span>;</div><div class="de1"> </div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">(</span><span class="re0">$prenom</span><span class="br0">)</span>;  <span class="co1">// Retourne TRUE -&gt; affiche 1</span></div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <span class="st0">'&lt;br/&gt;'</span>;</div><div class="de1">  <a href="http://www.php.net/echo"><span class="kw3">echo</span></a> <a href="http://www.php.net/isset"><span class="kw3">isset</span></a><span class="br0">(</span><span class="re0">$nom</span><span class="br0">)</span>;  <span class="co1">// Retourne FALSE -&gt; n'affiche rien</span></div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p>Dans notre exemple, $prenom est bien déclarée donc la fonction isset() retourne TRUE. Quant à la variable $nom, elle n'est pas déclarée dans le programme donc la fonction isset() retourne FALSE.</p><p><strong><em>Note :</em></strong> nous conseillons plutôt d'utiliser la fonction <a href="http://fr.php.net/empty" title="Documentation officielle de la fonction empty()">empty()</a> qui permet de savoir si une variable est vide ou non. Ainsi en faisant ce test, elle permet de connaître deux choses :<br><br>- La variable existe ou non(elle est déclarée)<br>- La variable contient une valeur ou bien est vide (null par exemple)</p><h3>Destruction d'une variable</h3><p>Il est aussi parfois utile de détruire les variables qui encombrent le programme et qui ne servent plus. Par défaut, toutes les variables sont automatiquement effacées à la fin de l'exécution du programme mais il est néanmoins possible de forcer leur suppression en cours d'exécution. Pour se faire, PHP dispose de la fonction (ou plutôt la structure de langage) <a href="http://fr.php.net/unset" title="Documentation officielle de la fonction unset()">unset()</a> qui prend en paramètre la variable à supprimer.</p><pre class="php"><div class="head">Suppression d'une ou plusieurs variables</div><div class="de1"><span class="kw2">&lt;?php</span></div><div class="de1">  <span class="co1">// Déclaration des variables</span></div><div class="de1">  <span class="re0">$prenom</span> = <span class="st0">'Hugo'</span>;</div><div class="de1">  <span class="re0">$nom</span> = <span class="st0">'Hamon'</span>;</div><div class="de1">  <span class="re0">$age</span> = <span class="nu0">19</span>;</div><div class="de1">  <span class="re0">$estEtudiant</span> = <span class="kw2">true</span>;</div><div class="de1">  <span class="co1">// Suppression d'une variable</span></div><div class="de1">  <a href="http://www.php.net/unset"><span class="kw3">unset</span></a><span class="br0">(</span><span class="re0">$prenom</span><span class="br0">)</span>;  </div><div class="de1">  <span class="co1">// Suppression de plusieurs variables</span></div><div class="de1">  <a href="http://www.php.net/unset"><span class="kw3">unset</span></a><span class="br0">(</span><span class="re0">$nom</span>, <span class="re0">$age</span>, <span class="re0">$estEtudiant</span><span class="br0">)</span>;</div><div class="de1"><span class="kw2">?&gt;</span></div></pre><p><strong><em>Note :</em></strong> si l'on souhaite supprimer plusieurs variables d'un coup, il suffit de les lui préciser en les séparant par une virgule.</p><h3>Conclusion</h3><p>Ce cours nous a permis de définir les notions de variable, de déclaration, d'initialisation mais aussi les principes de concaténation, d'opérations mathématiques et de variables dynamiques. Nous sommes désormais à même de nous lancer dans des programmes plus complexes.</p>
+    </div>
+
+    <div class="visualClear">
+        <hr>
+    </div>
+    <ul class="paginationTutoriel">
+                <li class="lienTutoGauche">
+            <a href="https://apprendre-php.com/tutoriels/tutoriel-5-les-constantes.html">« Les constantes</a>
+        </li>
+    
+                <li class="lienTutoDroite">
+            <a href="https://apprendre-php.com/tutoriels/tutoriel-7-les-tableaux-ou-arrays.html">Les tableaux (ou arrays) »</a>
+        </li>
+        </ul>
+    <div class="visualClear">
+        <hr>
+    </div>
+
+    <h2>Les commentaires</h2>
+
+    <div id="commentaires">
+                    <div id="comment30" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">1.</span>
+                <span>Par Mickaël Wolff</span>
+                <span>le 19/11/2007 18:09</span>
+            </p>
+            <blockquote>
+                <p>Pour virer une variable, j'ai tendance à l'annuler : $toto = null ;</p>
+            </blockquote>
+        </div>
+            <div id="comment33" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">2.</span>
+                <span>Par Emacs</span>
+                <span>le 19/11/2007 21:33</span>
+            </p>
+            <blockquote>
+                <p>La meilleure solution reste unset(). En faisant $toto = null, tu lui attribues une valeur mais tu ne la supprimes pas de la mémoire.</p>
+            </blockquote>
+        </div>
+            <div id="comment39" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">3.</span>
+                <span>Par Mickaël Wolff</span>
+                <span>le 20/11/2007 21:10</span>
+            </p>
+            <blockquote>
+                <p>La seule chose que fait en plus unset, c'est de supprimer la variable. Ce qui est en général inutile, surtout lorsque tu programmes en objet (d'ailleurs, unset devrait faire une erreur lorsqu'il est appelé sur un attribut, puisqu'il ne peut pas détruire la variable, mais uniquement la nullifier).<br>
+<br>
+Mais c'est du détail <img src="./exo2.php_files/clin_d_oeil.gif" alt=""></p>
+            </blockquote>
+        </div>
+            <div id="comment77" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">4.</span>
+                <span>Par greg</span>
+                <span>le 25/12/2007 23:10</span>
+            </p>
+            <blockquote>
+                <p>Très Très mais alors très mais vraiment très intéressant ces cours.<br>
+C'est légèrement plus détaillé que le Sdz et cela fait avancer !! COOLL</p>
+            </blockquote>
+        </div>
+            <div id="comment79" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">5.</span>
+                <span>Par Emacs</span>
+                <span>le 26/12/2007 00:36</span>
+            </p>
+            <blockquote>
+                <p>C'est le but ! Etre plus complet que la plupart des sites <img src="./exo2.php_files/smile.gif" alt=""></p>
+            </blockquote>
+        </div>
+            <div id="comment232" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">6.</span>
+                <span>Par tchix</span>
+                <span>le 08/04/2008 13:25</span>
+            </p>
+            <blockquote>
+                <p>Merci pour le partage de tes connaissances! <br>
+<br>
+C'est clair, précis, documenté et tres pédagogique.<br>
+<br>
+Merci.<br>
+<br>
+Tchix!</p>
+            </blockquote>
+        </div>
+            <div id="comment279" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">7.</span>
+                <span>Par Maman</span>
+                <span>le 24/05/2008 13:51</span>
+            </p>
+            <blockquote>
+                <p>c'est toujours trèsvsympathique de visiter to nblog <img src="./exo2.php_files/clin_d_oeil.gif" alt=""></p>
+            </blockquote>
+        </div>
+            <div id="comment281" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">8.</span>
+                <span>Par shark</span>
+                <span>le 24/05/2008 21:30</span>
+            </p>
+            <blockquote>
+                <p>C'est clair</p>
+            </blockquote>
+        </div>
+            <div id="comment292" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">9.</span>
+                <span>Par ky</span>
+                <span>le 07/06/2008 12:55</span>
+            </p>
+            <blockquote>
+                <p>merci c limpide  franchement bravo</p>
+            </blockquote>
+        </div>
+            <div id="comment327" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">10.</span>
+                <span>Par PasD'IdeesDePseudo</span>
+                <span>le 09/07/2008 17:24</span>
+            </p>
+            <blockquote>
+                <p>Salut à tous,<br>
+Très bon tuto, mais vu l'apprentissage que peut donner A-PHP tout au long de son parcours, ce n'est pas étonnant.<br>
+Toutefois, une petite question à propos de la concaténation, quand est-il préférable d'utiliser la dite virgule plutôt que le dit point ?<br>
+PasD'IdeesDePseudo</p>
+            </blockquote>
+        </div>
+            <div id="comment328" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">11.</span>
+                <span>Par Emacs</span>
+                <span>le 09/07/2008 23:09</span>
+            </p>
+            <blockquote>
+                <p>La virgule est uniquement à utiliser avec echo(). Dans tous les autres cas, il faudra avoir retour à l'opérateur de concaténation point.<br>
+<br>
+Merci pour ton commentaire <img src="./exo2.php_files/smile.gif" alt=""></p>
+            </blockquote>
+        </div>
+            <div id="comment333" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">12.</span>
+                <span>Par Nom d'un chien</span>
+                <span>le 15/07/2008 16:19</span>
+            </p>
+            <blockquote>
+                <p>Merci pour l'article, tres utile pour un debutant.</p>
+            </blockquote>
+        </div>
+            <div id="comment378" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">13.</span>
+                <span>Par Nico</span>
+                <span>le 12/08/2008 00:36</span>
+            </p>
+            <blockquote>
+                <p>Pourquoi les variables dynamiques sont vivement déconseillé svp ?<br>
+<br>
+Il y a t-il une source officielle ou des Bench qui le prouve svp ?</p>
+            </blockquote>
+        </div>
+            <div id="comment381" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">14.</span>
+                <span>Par Emacs</span>
+                <span>le 12/08/2008 08:29</span>
+            </p>
+            <blockquote>
+                <p>Bonjour Nico.<br>
+<br>
+Il ne faut pas les utiliser pour des raisons de lisibilité du code. Les variables dynamiques sont très difficiles à repérer dans un programme et surtout à maintenir aisément. Elles apportent un niveau de complexité du code non négligeable alors que les tableaux réduisent cette dernière. De plus, il vaut mieux utiliser des tableaux car l'on pourra toujours appliquer des actions de test, de tri, de calcul..., ce que l'on ne peut bien sûr pas réaliser avec les variables dynamiques.</p>
+            </blockquote>
+        </div>
+            <div id="comment382" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">15.</span>
+                <span>Par Nico</span>
+                <span>le 12/08/2008 12:27</span>
+            </p>
+            <blockquote>
+                <p>Bonjour Emacs,<br>
+<br>
+d'accord merci pour ces précisions <img src="./exo2.php_files/smile.gif" alt=""><br>
+J'avais peur que ça soit au niveau performance car j'en utilise quand j'ai pas le choix.<br>
+<br>
+Ca peut s'avérer utile dans certaines conditions.</p>
+            </blockquote>
+        </div>
+            <div id="comment383" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">16.</span>
+                <span>Par Emacs</span>
+                <span>le 12/08/2008 13:03</span>
+            </p>
+            <blockquote>
+                <p>Normalement tu ferais beaucoup mieux d'utiliser des tableaux plutôt que des variables dynamiques. Essaie de revoir pour ton code (ou ton prochain) pour t'orienter vers cette solution.</p>
+            </blockquote>
+        </div>
+            <div id="comment415" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">17.</span>
+                <span>Par Benamour</span>
+                <span>le 24/09/2008 18:03</span>
+            </p>
+            <blockquote>
+                <p>Tout bon tuto ! j'en ai parcouru pas mal et celui-ci est le plus complet, merci ! : )</p>
+            </blockquote>
+        </div>
+            <div id="comment671" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">18.</span>
+                <span>Par xsaiddx</span>
+                <span>le 10/03/2009 13:19</span>
+            </p>
+            <blockquote>
+                <p>bonjour tout le monde <br>
+je me demande si les variable dynamique sont deconseille alors sont just un poid superflu au php et sinon qlq un pourrait-il me donner un exemple un peu real ,vu que que suis un vrai debutant alors j'ai besoin de concretiser ca <br>
+merci ;]<br>
+bon site</p>
+            </blockquote>
+        </div>
+            <div id="comment828" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">19.</span>
+                <span>Par alibaba</span>
+                <span>le 27/06/2009 23:42</span>
+            </p>
+            <blockquote>
+                <p>Salut Emacs!<br>
+C'est pour signaler une erreur.<br>
+La ligne concernée est : La syntaxe $b-- est identique à $b-= et $b = $b-1.<br>
+$b-=1 au lieu de $b-=<br>
+Bonne continuation!!!</p>
+            </blockquote>
+        </div>
+            <div id="comment832" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">20.</span>
+                <span>Par Emacs</span>
+                <span>le 28/06/2009 01:21</span>
+            </p>
+            <blockquote>
+                <p>Merci Alibaba, c'est corrigé <img src="./exo2.php_files/clin_d_oeil.gif" alt=""></p>
+            </blockquote>
+        </div>
+            <div id="comment849" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">21.</span>
+                <span>Par Ismael++</span>
+                <span>le 10/07/2009 19:36</span>
+            </p>
+            <blockquote>
+                <p>Jamais je n'ai vu des cours aussi courts, complets et compréhensibles à la fois. On apprend vite car les tutos vont à l'essentiel (pas de comédie, de plaisanterie...). Merci Emacs pour ces chefs-d'oeuvre.</p>
+            </blockquote>
+        </div>
+            <div id="comment854" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">22.</span>
+                <span>Par webophile</span>
+                <span>le 13/07/2009 16:57</span>
+            </p>
+            <blockquote>
+                <p>Merci beaucoup c'est trés pratique</p>
+            </blockquote>
+        </div>
+            <div id="comment870" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">23.</span>
+                <span>Par totor</span>
+                <span>le 28/07/2009 10:15</span>
+            </p>
+            <blockquote>
+                <p>Vraiment mais Vraiment content !<br>
+<br>
+Je préfère largement ce tuto à celui du sdz !<br>
+<br>
+Il nous explique rapidement alors que celui du sdz est largement plus long !</p>
+            </blockquote>
+        </div>
+            <div id="comment874" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">24.</span>
+                <span>Par Emacs</span>
+                <span>le 30/07/2009 01:44</span>
+            </p>
+            <blockquote>
+                <p>Merci totor. Ce tutoriel a pour but d'aller à l'essentiel, tout en étant exhaustif et sans prendre le lecteur pour un débutant en dessous du zéro absolu... ce qui est malheureusement tout l'inverse sur le sdz.</p>
+            </blockquote>
+        </div>
+            <div id="comment900" class="commentaire">
+            <p class="infosPost">
+                <span class="commentNumber">25.</span>
+                <span>Par Julien</span>
+                <span>le 15/08/2009 15:52</span>
+            </p>
+            <blockquote>
+                <p>Oui en  effet, tutoriel beaucoup mieux que celui du Site du Zero, le top du top des Tutoriel ! <br>
+Bravo</p>
+            </blockquote>
+        </div>
+    
+    </div>
+
+                            </div><!-- end of #articles -->
+                    </div><!-- end of #content -->
+                </div><!-- end of #container -->
+                <div id="side">
+                    <div id="login-box">
+                                                    <form method="post" action="https://apprendre-php.com/auth">
+    <fieldset>
+        <legend>Identifiez-vous</legend>
+        <div>
+            <label for="login"><abbr title="Identifiant">ID</abbr></label>
+            <input type="text" id="login" name="login" value="">
+        </div>
+        <div>
+            <label for="pass"><abbr title="Mot de passe">MDP</abbr></label>
+            <input type="password" id="pass" name="password" value="">
+        </div>
+        <div id="actions">
+            <input type="submit" name="gotolog" value="OK" class="submit">
+            <a href="https://apprendre-php.com/forums/inscription.html" title="Rejoignez Apprendre-PHP !">Join</a><span class="masquer">&nbsp;|&nbsp;</span>
+            <a href="https://apprendre-php.com/forums/identifiants-perdus.html" title="Vous avez oublié vos identifiants ?"><abbr title="Identifiant">ID</abbr>/<abbr title="Mot de passe">MDP</abbr>?</a><span class="masquer">&nbsp;|&nbsp;</span>
+            <div class="clear">&nbsp;</div>
+        </div>
+    </fieldset>
+</form>
+                                            </div><!-- end of #login-box -->
+                    <div id="nav">
+                        
+                        <!-- Menu secondaire -->
+                            <h3>Cours &amp; tutoriels</h3>
+
+<ul>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-1-1-introduction-au-langage-php.html" title="Introduction au langage PHP">Introduction à PHP</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-2-1-les-environnements-de-travail-pour-dvelopper-en-php.html" title="Les environnements de travail pour développer en PHP">Environnements de...</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-3-1-les-bases-du-langage-php.html" title="Les bases du langage PHP">Les bases</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-12-1-traitement-d-images-avec-php.html" title="Traitement d&#39;images avec PHP">Les images</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-6-1-la-programmation-oriente-objet-poo.html" title="La programmation orientée objet (POO)">La POO</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-18-1-les-motifs-de-conception-design-patterns.html" title="Les motifs de conception (design patterns)">Les design patterns</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-17-1-scurit-des-applications-php.html" title="Sécurité des applications PHP">Sécurité PHP</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-21-1-les-frameworks-php.html" title="Les frameworks PHP">Les frameworks</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-19-1-bonnes-pratiques-de-dveloppement.html" title="Bonnes pratiques de développement">Bonnes pratiques</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-7-1-dveloppement-avanc-et-optimisation-des-applications.html" title="Développement avancé et optimisation des applications">Développement avancé...</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-8-1-exemples-concrets-de-scripts-php-utiles.html" title="Exemples concrets de scripts PHP utiles">Exemples concrets</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-10-1-les-serveurs-web-configuration-et-utilisation.html" title="Les serveurs Web : configuration et utilisation">Serveurs Web</a>
+    </li>
+    <li>
+        <a href="https://apprendre-php.com/tutoriels/categorie-24-1-congrs-salons-forums-autour-de-php.html" title="Congrès, salons, forums... autour de PHP">Evènements PHP</a>
+    </li>
+</ul>
+
+                        <!-- Livres PHP -->
+                        <h3>Livres utiles</h3>
+                            <p id="book">
+                                <a href="http://www.amazon.fr/gp/product/2212120265?ie=UTF8&amp;tag=appphp-21&amp;linkCode=as2&amp;camp=1642&amp;creative=6746&amp;creativeASIN=2212120265" title="">
+    <img src="./exo2.php_files/design-web-utiliser-les-standards.jpg" alt="">
+</a>
+
+                            </p>
+
+                        <!-- Partenaires -->
+                        <h3>Partenaires</h3>
+                            <ul>
+                                <li><a href="https://fr.jooble.org/emploi-php" title="Annonces d&#39;emploi sur PHP">Job PHP</a></li>
+                                <li><a href="http://www.jobsphp.fr/" title="Trouvez un emploi avec JobsPHP.fr" rel="nofollow">Emplois PHP</a></li>
+                                <li><a href="http://www.lephpfacile.com/" title="Cours de PHP" rel="nofollow">Le PHP Facile</a></li>
+                            </ul>
+                    </div><!-- end of #nav -->
+                </div><!-- end of #side -->
+                <div class="clear">&nbsp;</div><!-- presentational div -->
+            </div><!-- end of #fond-content -->
+        </div><!-- end of #page -->
+        <p id="footer">
+            Copyright © 2020 -  Apprendre-PHP.com - Tous droits réservés - Reproduction interdite même partielle - <a href="https://apprendre-php.com/tutoriels/tutoriel-6-les-variables.html#page" title="Retour en haut de page">haut de page</a>
+            <br><br>
+            Webdesign par KAC - Intégration XHTML / CSS par Neovov - Développement par Emacs &amp; Palleas.
+        </p>
+        <div id="footer-img">&nbsp;</div>
+            <script type="text/javascript">
+        $(document).ready(function () {
+            $.post("/tutoriels/tutoriel-6/hits");
+        });
+    </script>
+        <script type="text/javascript" src="./exo2.php_files/link-enhancer"></script>
+        <noscript>
+            <p>
+                <img src="http://www.assoc-amazon.fr/s/noscript?tag=appphp-21" alt="Boutique Amazon" />
+            </p>
+        </noscript>
+        <script type="text/javascript" src="./exo2.php_files/jquery.min.js.téléchargement"></script>
+        <script type="text/javascript" src="./exo2.php_files/highlight.pack.js.téléchargement"></script>
+        <script type="text/javascript">
+            hljs.tabReplace = '    ';
+            hljs.initHighlightingOnLoad();
+        </script>
+        <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            </script><script src="./exo2.php_files/ga.js.téléchargement" type="text/javascript"></script>
+            <script type="text/javascript">
+            var pageTracker = _gat._getTracker("UA-3507931-1");
+            pageTracker._initData();
+            pageTracker._trackPageview();
+        </script>
+    
+</body></html>
